@@ -265,11 +265,11 @@ function brandTitle() {
 }
 
 function renderWeekHeader() {
-  const dates = weekDates();
+  const date3 = weekDates();
   const start = dates[0];
   const end = dates[6];
   $("weekLabel").textContent = brandTitle();
-  const weekA�nt = weekOffset === 0 ? "本周" : weekOffset > 0 ? `往后第 ${weekOffset} 周` : `往前第 ${-weekOffset} 周`;
+  const weekHint = weekOffset === 0 ? "本周" : weekOffset > 0 ? `往后第 ${weekOffset} 周` : `往前第 ${-weekOffset} 周`;
   $("weekRange").textContent = `${weekHint}  ${start.getMonth() + 1}/${start.getDate()} – ${end.getMonth() + 1}/${end.getDate()}`;
   document.title = brandTitle();
 }
