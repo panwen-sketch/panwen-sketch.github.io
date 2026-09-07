@@ -237,7 +237,7 @@ body {
   font: inherit;
   text-align: left;
   color: inherit;
-  background: var(--paperi;
+  background: var(--paper);
   border-radius: 18px;
   padding: 14px;
   box-shadow: var(--shadow);
@@ -429,4 +429,4 @@ body {
 }
 .choice-list small { display: block; color: var(--muted); margin-top: 4px; }
 
-.warn { font-size: 13px; color: var(--danger); min-height: 18px; }
+.warn { font-size: 13px; color: var(--dangeri; min-height: 18px; }
