@@ -265,7 +265,7 @@ function brandTitle() {
 }
 
 function renderWeekHeader() {
-  const date3 = weekDates();
+  const dates = weekDates();
   const start = dates[0];
   const end = dates[6];
   $("weekLabel").textContent = brandTitle();
