@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+  <title>GOGO</title>
+  <link rel="stylesheet" href="./styles.css?v=19" />
+</head>
+<body>
+  <div id="app" class="phone">
+    <header class="topbar">
+      <div class="week-nav">
+        <button class="icon-btn" id="prevWeek" aria-label="上一周">‹</button>
+        <div class="week-title">
+          <div class="week-label" id="weekLabel">GOGO</div>
+          <div class="week-range" id="weekRange"></div>
+        </div>
+        <button class="icon-btn" id="nextWeek" aria-label="下一周">›</button>
+      </div>
+      <div class="kid-filter" id="kidFilter"></div>
+    </header>
+
+    <main class="screens">
+      <section class="screen is-active" id="screen-schedule" data-screen="schedule">
+        <div class="week-list" id="weekList"></div>
+      </section>
+
+      <section class="screen" id="screen-courses" data-screen="courses">
+        <div class="course-groups" id="courseGroups"></div>
+      </section>
+    </main>
+
+    <button class="fab" id="fab" aria-label="添加">＋</button>
+
+    <nav class="tabbar">
+      <button class="tab is-active" data-tab="schedule" aria-label="课表">
+        <span class="tab-icon">📅</span>
+      </button>
+      <button class="tab" data-tab="courses" aria-label="选课">
+        <span class="tab-icon">📚</span>
+      </button>
+    </nav>
+  </div>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="sheet" id="sheet"></div>
+  </div>
+
+  <script src="./app1.js?v=19"></script>
+  <script src="./app2.js?v=19"></script>
+  <script src="./app3.js?v=19"></script>
+  <script src="./app4.js?v=19"></script>
+</body>
+</html>
