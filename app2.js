@@ -1,5 +1,3 @@
-}
-
 function renderDayCard(date, iso, dayLessons, theme, index) {
   const isToday = iso === todayISO();
   const isLead = (weekOffset === 0 && isToday) || (weekOffset !== 0 && index === 0);
@@ -304,8 +302,3 @@ function openAddKid() {
     render();
   };
 }
-
-function openEditKid(kidId) {
-  const kid = kidById(kidId);
-  if (!kid) return;
-  openSheet(`
