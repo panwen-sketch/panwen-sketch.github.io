@@ -1,3 +1,7 @@
+function openEditKid(kidId) {
+  const kid = kidById(kidId);
+  if (!kid) return;
+  openSheet(`
     <h2>✏️ 编辑孩子</h2>
     <div class="field"><label>称呼</label><input id="kidName" value="${escapeHtml(kid.name)}" maxlength="8" /></div>
     <p class="warn" id="formWarn"></p>
@@ -309,3 +313,24 @@ function openEditSubject(subjectId) {
   $("saveSubject").onclick = () => {
     const name = $("subName").value.trim();
     if (!name) return ($("formWarn").textContent = "填写课程名");
+    if (allSubjects().some((s) => s.id !== subjectId && s.name === name)) return ($("formWarn").textContent = "这个课程名已经有了");
+    const extra = (state.extraSubjects || []).find((s) => s.id === subjectId);
+    if (extra) extra.name = name;
+    else {
+      const builtin = DEFAULT_SUBJECTS.find((s) => s.id === subjectId);
+      if (builtin && !state.extraSubjects.some((s) => s.id === subjectId)) {
+        state.extraSubjects.push({ ...builtin, name });
+        if (!state.removedSubjectIds.includes(subjectId)) state.removedSubjectIds.push(subjectId);
+      }
+    }
+    const today = todayISO();
+    state.lessons.forEach((lesson) => {
+      const courseSlot = slotById(lesson.slotId);
+      if (courseSlot?.subjectId === subjectId && lesson.date >= today && !lesson.skipped) lesson.name = name;
+    });
+    saveState();
+    closeSheet();
+    render();
+  };
+  $("deleteSubject").onclick = () => deleteSubject(subjectId);
+}
