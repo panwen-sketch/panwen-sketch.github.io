@@ -1,25 +1,3 @@
-    if (allSubjects().some((s) => s.id !== subjectId && s.name === name)) return ($("formWarn").textContent = "这个课程名已经有了");
-    const extra = (state.extraSubjects || []).find((s) => s.id === subjectId);
-    if (extra) extra.name = name;
-    else {
-      const builtin = DEFAULT_SUBJECTS.find((s) => s.id === subjectId);
-      if (builtin && !state.extraSubjects.some((s) => s.id === subjectId)) {
-        state.extraSubjects.push({ ...builtin, name });
-        if (!state.removedSubjectIds.includes(subjectId)) state.removedSubjectIds.push(subjectId);
-      }
-    }
-    const today = todayISO();
-    state.lessons.forEach((lesson) => {
-      const courseSlot = slotById(lesson.slotId);
-      if (courseSlot?.subjectId === subjectId && lesson.date >= today && !lesson.skipped) lesson.name = name;
-    });
-    saveState();
-    closeSheet();
-    render();
-  };
-  $("deleteSubject").onclick = () => deleteSubject(subjectId);
-}
-
 function deleteSubject(subjectId) {
   const subject = subjectById(subjectId);
   if (!subject) return;
@@ -174,7 +152,7 @@ function applySlotChange(slotId, next) {
 
 function deleteSlot(courseSlot) {
   const used = state.enrollments.filter((e) => e.slotId === courseSlot.id).length;
-  if (!confirm(used ? "删除这个班次？已选诽门课的未上课次会一起去掉。" : "删除这个班次？")) return;
+  if (!confirm(used ? "删除这个班次？已选这门课的未上课次会一起去掉。" : "删除这个班次？")) return;
   const inExtra = state.extraSlots.some((s) => s.id === courseSlot.id);
   if (inExtra) state.extraSlots = state.extraSlots.filter((s) => s.id !== courseSlot.id);
   else if (!state.removedSlotIds.includes(courseSlot.id)) state.removedSlotIds.push(courseSlot.id);
