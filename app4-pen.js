@@ -1,0 +1,1 @@
+document.querySelector(".screens").addEventListener("click",function(e){var editLesson=e.target.closest("[data-edit-lesson]");if(!editLesson)return;e.preventDefault();e.stopPropagation();openLessonDetail(editLesson.dataset.editLesson)},true);
