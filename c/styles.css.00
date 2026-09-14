@@ -1,0 +1,130 @@
+:root {
+  --navy: #111111;
+  --blue: #3554d1;
+  --cream: #ffffff;
+  --yellow: #d4f06a;
+  --sky: #3ea5db;
+  --bg: #ffffff;
+  --paper: #ffffff;
+  --ink: #111111;
+  --muted: #7a7a7a;
+  --line: #ececec;
+  --brand: #3554d1;
+  --brand-deep: #111111;
+  --danger: #e24b3d;
+  --shadow: 0 10px 28px rgba(17, 17, 17, 0.06);
+  --radius: 28px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.phone {
+  max-width: 430px;
+  min-height: 100%;
+  margin: 0 auto;
+  background: var(--bg);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.topbar {
+  padding: 8px 16px 4px;
+  background: var(--cream);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.week-title { text-align: center; }
+.week-label { font-size: 24px; font-weight: 800; letter-spacing: -0.03em; }
+.week-range { font-size: 11px; color: var(--muted); margin-top: 1px; }
+.icon-btn {
+  width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: var(--paper); color: var(--ink); font-size: 22px;
+  box-shadow: var(--shadow);
+}
+
+.kid-filter {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 2px 2px;
+  -webkit-overflow-scrolling: touch;
+}
+.kid-filter::-webkit-scrollbar { display: none; }
+
+.chip {
+  flex: 0 0 auto;
+  border: 0;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.chip input { accent-color: var(--blue); }
+.chip.is-on { background: #d7ecf8; }
+.chip.add { color: var(--blue); font-weight: 700; background: var(--paper); }
+.chip-edit {
+  border: 0;
+  background: #d7ecf8;
+  color: var(--navy);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.screens { flex: 1; overflow: auto; padding: 4px 16px 96px; }
+.screen { display: none; }
+.screen.is-active { display: block; }
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 28px 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.week-stack {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+}
+.day-card {
+  width: 100%;
+  border: 0;
+  font: inherit;
+  text-align: left;
+  border-radius: 28px;
+  padding: 12px 16px 34px;
+  margin: 0 0 -24px;
+  color: inherit;
+  position: relative;
+  box-shadow: none;
+  cursor: pointer;
+}
+.day-card.is-lead {
+  padding: 16px 16px 36px;
+}
